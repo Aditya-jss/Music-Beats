@@ -1,6 +1,7 @@
 let progress = document.getElementById("progress");
 let song = document.getElementById("song");
 let ctrlIcon = document.getElementById("ctrlIcon");
+let songList = document.getElementById("song-list");
 
 const songs = [
     {
@@ -12,8 +13,8 @@ const songs = [
     {
         title: 'Sweet',
         artist: 'Artist Name',
-        file: 'sweet.mp3',
-        img: 'your-next-song-image.jpg'
+        file: 'too-romantic-218223.mp3',
+        img: 'purple-jungle-girl-illustration-premade-album-cover-art.webp'
     }
     // Add more songs here
 ];
@@ -56,6 +57,20 @@ function nextSong() {
 function prevSong() {
     songIndex = (songIndex - 1 + songs.length) % songs.length;
     loadSong(songIndex);
+}
+
+function toggleSongList() {
+    if (songList.style.display === "none") {
+        songList.style.display = "block";
+    } else {
+        songList.style.display = "none";
+    }
+}
+
+function selectSong(index) {
+    songIndex = index;
+    loadSong(songIndex);
+    toggleSongList(); // Hide the list after song selection
 }
 
 song.onloadedmetadata = function() {
